@@ -5,6 +5,8 @@ const ASSETS = [
   "./",
   "index.html",
   "storyData.js",
+  "manifest.json",
+  "icon.png",
 
   /* Media */
   "opening.jpg",
@@ -19,8 +21,6 @@ const ASSETS = [
   "kabirtalk.png",
   "city_fight.jpg",
   "kabirend.jpg",
-  "bgmusic.mp3",
-  "magic.mp3"
 ];
 
 // Install service worker and cache all assets

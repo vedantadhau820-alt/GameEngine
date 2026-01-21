@@ -151,7 +151,7 @@ heroRise: {
         { name: "Narrator", text: "Aarav apne dil mein vow leta hai… ki ab koi aur Kabir ki tarah girne nahi dega." }
     ],
     effects: () => { player.flags.completed = true; },
-    choices: []
+    choices: [{ text: "The End", next: ""}]
 }
 
 };

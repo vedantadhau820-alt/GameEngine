@@ -1,4 +1,4 @@
-const CACHE_NAME = "choice-game-cache-v1";
+const CACHE_NAME = "choice-game-cache-v2";
 
 // Add all files that should be available offline
 const ASSETS = [

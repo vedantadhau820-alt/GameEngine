@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Choice Game</title>
+<title>Choice Game Engine</title>
 <script src="storyData.js"></script>
 <style>
   body { font-family: "Poppins", sans-serif; background:#e9e9ec; margin:0; padding:0; display:flex; justify-content:center; align-items:center; height:100vh; }
@@ -12,7 +12,18 @@
   #nameBox { font-weight:bold; margin-bottom:5px; color:#444; }
   .choice, #nextBtn { width:100%; padding:12px; margin:6px 0; border:none; border-radius:10px; background:#4a6cf7; color:white; cursor:pointer; transition:0.2s; font-size:16px; }
   .choice:hover, #nextBtn:hover { background:#2b4de0; }
-</style>
+  @media (max-width: 480px) { #game { padding:16px; border-radius:16px; }
+
+   #story {
+      font-size:16px;
+    }
+
+    .choice, #nextBtn {
+      padding:12px;
+      font-size:16px;
+    }
+  }
+  </style>
 </head>
 <body>
 <div id="game">

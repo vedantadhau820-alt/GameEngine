@@ -2,19 +2,76 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Choice Game Engine</title>
 <script src="storyData.js"></script>
-<style>
-  body { font-family: "Poppins", sans-serif; background:#e9e9ec; margin:0; padding:0; display:flex; justify-content:center; align-items:center; height:100vh; }
-  #game { width:420px; background:white; border-radius:20px; padding:20px; box-shadow:0 10px 30px rgba(0,0,0,0.15); }
-  #story { min-height:200px; margin-bottom:20px; font-size:18px; line-height:1.4; }
-  img, video { width:100%; border-radius:15px; margin-bottom:15px; }
-  #nameBox { font-weight:bold; margin-bottom:5px; color:#444; }
-  .choice, #nextBtn { width:100%; padding:12px; margin:6px 0; border:none; border-radius:10px; background:#4a6cf7; color:white; cursor:pointer; transition:0.2s; font-size:16px; }
-  .choice:hover, #nextBtn:hover { background:#2b4de0; }
-  @media (max-width: 480px) { #game { padding:16px; border-radius:16px; }
 
-   #story {
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    background:#e9e9ec;
+    margin:0;
+    padding:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+  }
+
+  #game {
+    width: 90%;
+    max-width: 500px; /* Bigger on mobile */
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  }
+
+  #story {
+    min-height:200px;
+    margin-bottom:20px;
+    font-size:18px;
+    line-height:1.5;
+  }
+
+  img, video {
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
+  }
+
+  #nameBox {
+    font-weight:bold;
+    margin-bottom:5px;
+    color:#444;
+    font-size: 1.1em;
+  }
+
+  .choice, #nextBtn {
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    border:none;
+    border-radius:12px;
+    background:#4a6cf7;
+    color:white;
+    cursor:pointer;
+    transition:0.2s;
+    font-size:17px;
+  }
+
+  .choice:hover, #nextBtn:hover {
+    background:#2b4de0;
+  }
+
+  /* 🌟 MOBILE FIXES */
+  @media (max-width: 480px) {
+    #game {
+      padding:16px;
+      border-radius:16px;
+    }
+
+    #story {
       font-size:16px;
     }
 
@@ -23,31 +80,80 @@
       font-size:16px;
     }
   }
-  </style>
+</style>
 </head>
+
 <body>
 <div id="game">
   <div id="story"></div>
   <div id="choices"></div>
 </div>
+
 <script>
 let player = { name:"Hero", xp:0, items:[], flags:{} };
 let currentScene = null;
 let dialogueIndex = 0;
-const bgMusic = new Audio("bgmusic.mp3"); bgMusic.loop = true; bgMusic.volume = .5; bgMusic.play().catch(()=>{});
+const bgMusic = new Audio("bgmusic.mp3"); 
+bgMusic.loop = true; 
+bgMusic.volume = .5; 
+bgMusic.play().catch(()=>{});
 
-function loadScene(key){ currentScene = storyData[key]; dialogueIndex = 0; if(currentScene.effects) currentScene.effects(player); renderMedia(); showDialogue(); }
-function renderMedia(){ const d=document.getElementById("story"); d.innerHTML=""; if(currentScene.video) d.innerHTML+=`<video src="${currentScene.video}" autoplay muted loop></video>`; if(currentScene.image) d.innerHTML+=`<img src="${currentScene.image}">`; if(currentScene.audio) new Audio(currentScene.audio).play(); }
-function showDialogue(){ const d=document.getElementById("story"), c=document.getElementById("choices"); c.innerHTML="";
-  if(dialogueIndex >= (currentScene.dialogue?.length||0)){ showChoices(); return; }
-  let line=currentScene.dialogue[dialogueIndex];
+function loadScene(key){
+  currentScene = storyData[key]; 
+  dialogueIndex = 0; 
+  if(currentScene.effects) currentScene.effects(player); 
+  renderMedia(); 
+  showDialogue(); 
+}
+
+function renderMedia(){ 
+  const d = document.getElementById("story"); 
+  d.innerHTML = ""; 
+  if(currentScene.video) d.innerHTML += `<video src="${currentScene.video}" autoplay muted loop></video>`; 
+  if(currentScene.image) d.innerHTML += `<img src="${currentScene.image}">`; 
+  if(currentScene.audio) new Audio(currentScene.audio).play(); 
+}
+
+function showDialogue(){ 
+  const d = document.getElementById("story"), 
+        c = document.getElementById("choices"); 
+  c.innerHTML = "";
+
+  if(dialogueIndex >= (currentScene.dialogue?.length||0)){ 
+      showChoices(); 
+      return; 
+  }
+
+  let line = currentScene.dialogue[dialogueIndex];
+
   d.innerHTML += `<div id='nameBox'>${line.name}</div><p>${line.text}</p>`;
-  const next=document.createElement("button"); next.id="nextBtn"; next.innerText="Next →";
-  next.onclick=()=>{ dialogueIndex++; renderMedia(); showDialogue(); };
+
+  const next = document.createElement("button"); 
+  next.id = "nextBtn"; 
+  next.innerText = "Next →";
+
+  next.onclick = () => { 
+      dialogueIndex++; 
+      renderMedia(); 
+      showDialogue(); 
+  };
+
   c.appendChild(next);
 }
-function showChoices(){ const c=document.getElementById("choices"); c.innerHTML="";
-  currentScene.choices.forEach(ch=>{ const b=document.createElement("button"); b.className="choice"; b.innerText=ch.text; b.onclick=()=>loadScene(ch.next); c.appendChild(b); }); }
+
+function showChoices(){ 
+  const c = document.getElementById("choices"); 
+  c.innerHTML = "";
+
+  currentScene.choices.forEach(ch => {
+      const b = document.createElement("button"); 
+      b.className = "choice"; 
+      b.innerText = ch.text; 
+      b.onclick = () => loadScene(ch.next); 
+      c.appendChild(b); 
+  });
+}
+
 loadScene("start");
 </script>
 </body>

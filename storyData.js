@@ -15,7 +15,7 @@ start: {
 },
 
 testPowers: {
-    image: "lightburst.jpg",
+    image: "Lightburst.jpg",
     dialogue: [
         { name: "Aarav", text: "Y-yeh kya… mere haath se electricity!? Yeh kaise!?" },
         { name: "Narrator", text: "Uski speed insan ke limit se bahar ho jaati hai… senses superhuman ban jaate hain… aur dimaag pehle se bhi sharp." },

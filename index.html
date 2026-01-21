@@ -3,8 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Choice Game Engine</title>
+<title>SupeGame</title>
 <script src="storyData.js"></script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.png" type="image/x-icon">
+  
 
 <style>
   body {
@@ -89,6 +92,12 @@
   <div id="choices"></div>
 </div>
 
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js')
+  .then(() => console.log("Service Worker Registered"));
+}
+</script>
 <script>
 let player = { name:"Hero", xp:0, items:[], flags:{} };
 let currentScene = null;

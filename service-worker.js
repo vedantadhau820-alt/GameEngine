@@ -10,7 +10,7 @@ const ASSETS = [
 
   /* Media */
   "opening.jpg",
-  "lightburst.jpg",
+  "Lightburst.jpg",
   "college.jpg",
   "riya.jpg",
   "awakening.jpg",

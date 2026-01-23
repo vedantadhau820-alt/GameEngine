@@ -2,79 +2,85 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Choice Game Engine</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SupeGame</title>
 <script src="storyData.js"></script>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.png" type="image/x-icon">
+  
 
 <style>
   body {
     font-family: "Poppins", sans-serif;
-    background: #e9e9ec;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-
-  /* MAIN GAME BOX — now responsive */
-  #homeScreen, #game {
-    width: 95%;               /* MUCH BIGGER on phone */
-    max-width: 90vw;         /* Wider than before */
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    background:#e9e9ec;
+    margin:0;
+    padding:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
   }
 
   #game {
-    display: none;
+    width: 90vw;
+     /* Bigger on mobile */
+    background:white;
+    border-radius:20px;
+    padding:20px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.15);
   }
 
   #story {
-    min-height: 250px;        /* Slightly larger story box */
-    margin-bottom: 20px;
-    font-size: 20px;          /* Bigger readable text */
-    line-height: 1.5;
+    min-height:200px;
+    margin-bottom:20px;
+    font-size:18px;
+    line-height:1.5;
   }
 
   img, video {
-    width: 100%;
-    border-radius: 15px;
-    margin-bottom: 15px;
+    width:100%;
+    border-radius:15px;
+    margin-bottom:15px;
   }
 
   #nameBox {
-    font-weight: bold;
-    margin-bottom: 5px;
-    color: #444;
-    font-size: 18px;          /* Bigger speaker name */
+    font-weight:bold;
+    margin-bottom:5px;
+    color:#444;
+    font-size: 1.1em;
   }
 
-  /* BUTTONS */
-  .choice, #nextBtn, #startBtn {
-    width: 100%;
-    padding: 15px;            /* Bigger tap area */
-    margin: 10px 0;
-    border: none;
-    border-radius: 12px;
-    background: #4a6cf7;
-    color: white;
-    cursor: pointer;
-    transition: 0.2s;
-    font-size: 18px;          /* Larger font */
+  .choice, #nextBtn {
+    width:100%;
+    padding:14px;
+    margin:8px 0;
+    border:none;
+    border-radius:12px;
+    background:#4a6cf7;
+    color:white;
+    cursor:pointer;
+    transition:0.2s;
+    font-size:17px;
   }
 
-  .choice:hover, #nextBtn:hover, #startBtn:hover {
-    background: #2b4de0;
+  .choice:hover, #nextBtn:hover {
+    background:#2b4de0;
   }
 
-  /* BETTER MOBILE SPACING */
-  @media (max-height: 700px) {
-    body {
-      align-items: flex-start;
-      padding-top: 20px;
-      height: auto;
+  /* 🌟 MOBILE FIXES */
+  @media (max-width: 480px) {
+    #game {
+      padding:16px;
+      border-radius:16px;
+    }
+
+    #story {
+      font-size:16px;
+    }
+
+    .choice, #nextBtn {
+      padding:12px;
+      font-size:16px;
     }
   }
 </style>

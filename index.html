@@ -10,17 +10,17 @@
     font-family: "Poppins", sans-serif;
     background: #e9e9ec;
     margin: 0;
-    padding: 15px;
+    padding: 0;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    min-height: 100vh;
+    align-items: center;
+    height: 100vh;
   }
 
-  /* RESPONSIVE CONTAINER */
+  /* MAIN GAME BOX — now responsive */
   #homeScreen, #game {
-    width: 100%;
-    max-width: 600px; /* bigger for phones */
+    width: 95%;               /* MUCH BIGGER on phone */
+    max-width: 480px;         /* Wider than before */
     background: white;
     border-radius: 20px;
     padding: 25px;
@@ -32,9 +32,9 @@
   }
 
   #story {
-    min-height: 200px;
+    min-height: 250px;        /* Slightly larger story box */
     margin-bottom: 20px;
-    font-size: 18px;
+    font-size: 20px;          /* Bigger readable text */
     line-height: 1.5;
   }
 
@@ -48,36 +48,33 @@
     font-weight: bold;
     margin-bottom: 5px;
     color: #444;
+    font-size: 18px;          /* Bigger speaker name */
   }
 
+  /* BUTTONS */
   .choice, #nextBtn, #startBtn {
     width: 100%;
-    padding: 14px;
-    margin: 8px 0;
+    padding: 15px;            /* Bigger tap area */
+    margin: 10px 0;
     border: none;
     border-radius: 12px;
     background: #4a6cf7;
     color: white;
     cursor: pointer;
     transition: 0.2s;
-    font-size: 17px;
+    font-size: 18px;          /* Larger font */
   }
 
   .choice:hover, #nextBtn:hover, #startBtn:hover {
     background: #2b4de0;
   }
 
-  /* MOBILE OPTIMIZATION */
-  @media (max-width: 480px) {
-    #story {
-      font-size: 20px;
-    }
-    #homeScreen h2 {
-      font-size: 24px;
-    }
-    .choice, #nextBtn, #startBtn {
-      font-size: 18px;
-      padding: 16px;
+  /* BETTER MOBILE SPACING */
+  @media (max-height: 700px) {
+    body {
+      align-items: flex-start;
+      padding-top: 20px;
+      height: auto;
     }
   }
 </style>

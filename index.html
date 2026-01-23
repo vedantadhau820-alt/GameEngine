@@ -10,16 +10,17 @@
     font-family: "Poppins", sans-serif;
     background: #e9e9ec;
     margin: 0;
-    padding: 0;
+    padding: 15px;
     display: flex;
     justify-content: center;
-    align-items: center;
-    height: 100vh;
+    align-items: flex-start;
+    min-height: 100vh;
   }
 
+  /* RESPONSIVE CONTAINER */
   #homeScreen, #game {
-    width: 90vw;
-    height: 60vh;
+    width: 100%;
+    max-width: 600px; /* bigger for phones */
     background: white;
     border-radius: 20px;
     padding: 25px;
@@ -28,14 +29,13 @@
 
   #game {
     display: none;
-    width: 90vw;
   }
 
   #story {
     min-height: 200px;
     margin-bottom: 20px;
     font-size: 18px;
-    line-height: 1.4;
+    line-height: 1.5;
   }
 
   img, video {
@@ -52,19 +52,33 @@
 
   .choice, #nextBtn, #startBtn {
     width: 100%;
-    padding: 12px;
-    margin: 6px 0;
+    padding: 14px;
+    margin: 8px 0;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     background: #4a6cf7;
     color: white;
     cursor: pointer;
     transition: 0.2s;
-    font-size: 16px;
+    font-size: 17px;
   }
 
   .choice:hover, #nextBtn:hover, #startBtn:hover {
     background: #2b4de0;
+  }
+
+  /* MOBILE OPTIMIZATION */
+  @media (max-width: 480px) {
+    #story {
+      font-size: 20px;
+    }
+    #homeScreen h2 {
+      font-size: 24px;
+    }
+    .choice, #nextBtn, #startBtn {
+      font-size: 18px;
+      padding: 16px;
+    }
   }
 </style>
 </head>
